@@ -34,7 +34,49 @@ import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HomeIcon from "@mui/icons-material/Home";
 
-export const studentListitems = [
+export const MsStudentListitems = [
+  {
+    text: "Home",
+    icon: <HomeIcon />,
+    path: "/Dashboard",
+  },
+
+  {
+    text: "Synopsis Submission",
+    icon: <PollIcon />,
+    path: "/Dashboard/SynopsisSubmission",
+  },
+  {
+    text: "Thesis Submission",
+    icon: <PollIcon />,
+    path: "/Dashboard/ThesisSubmission",
+  },
+
+  {
+    text: "Edit Profile",
+    icon: <AddBoxIcon />,
+    path: "/Dashboard/EditProfile",
+  },
+
+  {
+    text: "View Notification",
+    icon: <ManageAccountsIcon />,
+    path: "/Dashboard/ViewNotification",
+  },
+  {
+    text: "View Announcement",
+    icon: <ManageAccountsIcon />,
+    path: "/Dashboard/ViewAnnouncement",
+  },
+
+  {
+    text: "Change Password",
+    icon: <ChangeCircleIcon />,
+    path: "/Dashboard/ChangePassword",
+  },
+];
+
+export const PhdStudentListitems = [
   {
     text: "Home",
     icon: <HomeIcon />,

@@ -292,7 +292,7 @@ const DashboardContent = (props) => {
           </Toolbar>
           <Divider />
           <List wrap sx={{ mx: [3], ...(!open && { mx: [1] }) }}>
-            <Sidebar onUser={props.onUser} />
+            <Sidebar onUser={props.onUser} student={props.student} />
             {console.log(props.onUser)}
             {/* <MainListItems onActiveTab={setActiveTab} onTab={activeTab} /> */}
           </List>

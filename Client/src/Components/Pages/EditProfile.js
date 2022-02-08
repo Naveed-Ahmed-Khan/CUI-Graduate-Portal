@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
-export default function EditProfile() {
+export default function EditProfile(props) {
   const alertHandler = () => {
     alert("Student Added!");
   };
@@ -567,13 +567,32 @@ export default function EditProfile() {
                   />
                 </div>
               </div> */}
-              <TextField
-                id="standard-basic"
-                sx={{ width: "100%", marginBottom: "15px" }}
-                label="Total Publication (during PhD)"
-                color="secondary"
-                variant="outlined"
-              />
+              {props.student === "PHD" && (
+                <>
+                  <TextField
+                    id="standard-basic"
+                    sx={{ width: "100%", marginBottom: "15px" }}
+                    label="Total Publication (during PhD)"
+                    color="secondary"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="standard-basic"
+                    sx={{ width: "100%", marginBottom: "15px" }}
+                    label="Impact Factor Publications (after synopsis approval)"
+                    color="secondary"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="standard-basic"
+                    sx={{ width: "100%", marginBottom: "15px" }}
+                    label="Other Issue"
+                    color="secondary"
+                    variant="outlined"
+                  />
+                </>
+              )}
+
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Other Issue :</div>
@@ -587,13 +606,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div> */}
-              <TextField
-                id="standard-basic"
-                sx={{ width: "100%", marginBottom: "15px" }}
-                label="Impact Factor Publications (after synopsis approval)"
-                color="secondary"
-                variant="outlined"
-              />
+
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Synopsis Status :</div>
@@ -607,13 +620,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div> */}
-              <TextField
-                id="standard-basic"
-                sx={{ width: "100%", marginBottom: "15px" }}
-                label="Other Issue"
-                color="secondary"
-                variant="outlined"
-              />
+
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Thesis Status :</div>

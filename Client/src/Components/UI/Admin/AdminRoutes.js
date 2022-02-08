@@ -42,9 +42,11 @@ const AdminRoutes = (props) => {
     <Routes>
       <Route path="/" element={<SignIn onLogin={props.onLogin} />} />
       <Route path="/SignUp" element={<SignUp onLogIn={props.onLogin} />} />
-      <Route path="/Dashboard" element={<AdminDashboard onUser={props.user} />}>
+      <Route
+        path="/Dashboard"
+        element={<AdminDashboard onUser={props.user} student={props.student} />}
+      >
         <Route index element={<Home onUser={props.user} />} />
-
         <Route path="/Dashboard/ManagePrograms" element={<ManagePrograms />} />
         <Route path="/Dashboard/AddPrograms" element={<AddManageProgram />} />
         <Route path="/Dashboard/ManageSessions" element={<ManageSession />} />
@@ -143,7 +145,10 @@ const AdminRoutes = (props) => {
           element={<ViewNotification />}
         />
 
-        <Route path="/Dashboard/EditProfile" element={<EditProfile />} />
+        <Route
+          path="/Dashboard/EditProfile"
+          element={<EditProfile student={props.student} />}
+        />
       </Route>
     </Routes>
   );

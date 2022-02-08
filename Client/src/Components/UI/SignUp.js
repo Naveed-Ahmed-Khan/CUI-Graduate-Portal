@@ -19,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import DialogueSelect from "./RegiNumberDialog";
 /* 
 function Copyright(props) {
   return (
@@ -41,6 +42,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp(props) {
+  const [regNumber, setRegNumber] = React.useState({
+    session: "",
+    sessionNumber: "",
+    program: "",
+    regNumber: "",
+  });
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -78,7 +86,7 @@ export default function SignUp(props) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -106,57 +114,118 @@ export default function SignUp(props) {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item md={2} xs={12}>
-                <FormControl fullWidth color="secondary">
-                  <InputLabel id="demo-simple-select-label">Program</InputLabel>
+              <Grid item sx={{ mb: [1] }} md={12} xs={12}>
+                <DialogueSelect onRegNum={setRegNumber} />
+              </Grid>
+
+              <Grid container sx={{ marginLeft: "16px" }} md={12} xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel placeholder="SP/FA" id="demo-simple-select-label">
+                    Category
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
-                    id="Program"
-                    name="Program"
+                    id="session"
+                    name="session"
+                    variant="outlined"
                     //value={Program}
-                    label="Program"
+                    label="Category"
+
                     //onChange={handleChange}
                   >
-                    <MenuItem value={12}>PhD (CS)</MenuItem>
-                    <MenuItem value={14}>MS (CS)</MenuItem>
-                    <MenuItem value={15}>MS (SE)</MenuItem>
-                    <MenuItem value={15}>MS (IS)</MenuItem>
+                    <MenuItem value={"PhD"}>PhD</MenuItem>
+                    <MenuItem value={"MS"}>MS</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid Grid item md={2} xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="RegistrationNumber"
-                  required
-                  fullWidth
-                  id="RegistrationNumber"
-                  label="Registration Number"
-                  autoFocus
-                />
-              </Grid>
-              <Grid Grid item md={5} xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="RegistrationNumber"
-                  required
-                  fullWidth
-                  id="RegistrationNumber"
-                  label="Registration Number"
-                  autoFocus
-                />
-              </Grid>
-              <Grid Grid item md={3} xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="RegistrationNumber"
-                  required
-                  fullWidth
-                  id="RegistrationNumber"
-                  label="Registration Number"
-                  autoFocus
-                />
-              </Grid>
+
+              {/* <Grid container className="input">
+                <Grid item md={12} xs={12}>
+                  <Typography
+                    component="h6"
+                    variant="h6"
+                    sx={{ fontSize: "16px", color: "rgb(102,102,102)" }}
+                  >
+                    Registration Number *
+                  </Typography>
+                </Grid>
+
+                <Grid item md={3} xs={12}>
+                  <FormControl fullWidth>
+                    <InputLabel
+                      placeholder="SP/FA"
+                      id="demo-simple-select-label"
+                    ></InputLabel>
+                    <Select
+                      defaultValue="SP/FA"
+                      labelId="demo-simple-select-label"
+                      id="session"
+                      name="session"
+                      variant="standard"
+                      //value={Program}
+                      label=""
+
+                      //onChange={handleChange}
+                    >
+                      <MenuItem disabled value={"SP/FA"}>
+                        N/A
+                      </MenuItem>
+                      <MenuItem value={"SP"}>SP</MenuItem>
+                      <MenuItem value={"FA"}>FA</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid Grid item md={3} xs={12}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="sessionNumber"
+                    required
+                    variant="standard"
+                    fullWidth
+                    placeholder="00"
+                    id="sessionNumber"
+                    label=""
+                    autoFocus
+                  />
+                </Grid>
+                <Grid Grid item md={3} xs={12}>
+                  <FormControl fullWidth color="primary">
+                    <Select
+                      defaultValue="Program"
+                      labelId="demo-simple-select-label"
+                      id="Program"
+                      name="Program"
+                      variant="standard"
+                      //value={Program}
+                      label=""
+                      placeholder="Program"
+                      //onChange={handleChange}
+                    >
+                      <MenuItem disabled value={"Program"}>
+                        N/A
+                      </MenuItem>
+                      <MenuItem value={"CS"}>CS</MenuItem>
+                      <MenuItem value={"SE"}> SE</MenuItem>
+                      <MenuItem value={"IS"}> IS</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+
+                <Grid Grid item md={3} xs={12}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="RegistrationNumber"
+                    required
+                    placeholder="000"
+                    variant="standard"
+                    fullWidth
+                    id="RegistrationNumber"
+                    label=""
+                    autoFocus
+                  />
+                </Grid>
+              </Grid> */}
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -469,6 +538,7 @@ export default function SignUp(props) {
             </Grid>
           </Box>
         </Box>
+        {console.log(regNumber)}
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>

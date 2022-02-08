@@ -38,7 +38,10 @@ import { Link, useLocation } from "react-router-dom";
 import "./ActiveTab.css";
 import { adminListitems } from "../SidebarListItems/adminList";
 import { useNavigate } from "react-router-dom";
-import { studentListitems } from "../SidebarListItems/studentList";
+import {
+  MsStudentListitems,
+  PhdStudentListitems,
+} from "../SidebarListItems/studentList";
 
 export const Sidebar = (props) => {
   const navigate = useNavigate();
@@ -72,8 +75,12 @@ export const Sidebar = (props) => {
   return (
     <div>
       {props.onUser === "ADMIN" && adminListitems.map(checkUser)}
-      {props.onUser === "STUDENT" && studentListitems.map(checkUser)}
-
+      {props.onUser === "STUDENT" &&
+        props.student === "MS" &&
+        MsStudentListitems.map(checkUser)}
+      {props.onUser === "STUDENT" &&
+        props.student === "PHD" &&
+        PhdStudentListitems.map(checkUser)}
       {/* {props.onUser === "ADMIN" && adminListitems.map(checkUser)} */}
 
       {/* <div className={props.onTab === "MANAGE PROGRAM" && "tab"}>
