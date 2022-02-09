@@ -26,11 +26,11 @@ exports.studentSignUpNeeds = async (req) => {
   needs = {};
   needs.program = await Program.findOne(
     {
-      programShortName: user.programShortName,
+      programShortName: user?.program,
     },
     { _id: 1 }
   );
-  needs.supervisor = await Faculty.findOne(
+  /*  needs.supervisor = await Faculty.findOne(
     {
       username: user.supervisorName,
     },
@@ -41,13 +41,13 @@ exports.studentSignUpNeeds = async (req) => {
       username: user.coSupervisorName,
     },
     { _id: 1 }
-  );
-  needs.session = await Session.findOne(
+  ); */
+  /*  needs.session = await Session.findOne(
     {
-      title: user.sessionTitle,
+      title: user.session,
     },
     { _id: 1 }
-  );
+  ); */
   return needs;
 };
 

@@ -36,22 +36,36 @@ import ViewAnnouncement from "../../Pages/ViewAnnouncement";
 import ViewNotification from "../../Pages/ViewNotification";
 import SignUp from "../../UI/SignUp";
 import SignIn from "../SignIn";
+import EvaluateThesisMS from "../../Pages/EvaluateThesisMS";
+import EvaluateThesisPhD from "../../Pages/EvaluateThesisPhD";
+import PendingThesis from "../../Pages/PendingThesis";
+import AddFaculty from "../../Pages/AddFaculty";
 
 const AdminRoutes = (props) => {
   return (
     <Routes>
-      <Route path="/" element={<SignIn onLogin={props.onLogin} />} />
-      <Route path="/SignUp" element={<SignUp onLogIn={props.onLogin} />} />
+      <Route
+        path="/"
+        element={<SignIn onLogin={props.onLogin} program={props.program} />}
+      />
+      <Route
+        path="/SignUp"
+        element={<SignUp onLogIn={props.onLogin} onProgram={props.onProgram} />}
+      />
       <Route
         path="/Dashboard"
-        element={<AdminDashboard onUser={props.user} student={props.student} />}
+        element={<AdminDashboard onUser={props.user} program={props.program} />}
       >
-        <Route index element={<Home onUser={props.user} />} />
+        <Route
+          index
+          element={<Home onUser={props.user} program={props.program} />}
+        />
         <Route path="/Dashboard/ManagePrograms" element={<ManagePrograms />} />
         <Route path="/Dashboard/AddPrograms" element={<AddManageProgram />} />
         <Route path="/Dashboard/ManageSessions" element={<ManageSession />} />
         <Route path="/Dashboard/AddSessions" element={<AddSession />} />
         <Route path="/Dashboard/ViewFaculty" element={<ViewFaculty />} />
+        <Route path="/Dashboard/AddFaculty" element={<AddFaculty />} />
         <Route path="/Dashboard/ManageStudents" element={<ManageStudent />} />
         <Route path="/Dashboard/AddStudent" element={<AddStudent />} />
         <Route
@@ -77,6 +91,15 @@ const AdminRoutes = (props) => {
         <Route
           path="/Dashboard/EvaluateSynopsis(PhD)"
           element={<EvaluateSynopsisPhD />}
+        />
+        <Route path="/Dashboard/PendingThesis" element={<PendingThesis />} />
+        <Route
+          path="/Dashboard/EvaluateThesis(MS)"
+          element={<EvaluateThesisMS />}
+        />
+        <Route
+          path="/Dashboard/EvaluateThesis(PhD)"
+          element={<EvaluateThesisPhD />}
         />
         <Route
           path="/Dashboard/ManageNotification"
@@ -144,7 +167,6 @@ const AdminRoutes = (props) => {
           path="/Dashboard/ViewNotification"
           element={<ViewNotification />}
         />
-
         <Route
           path="/Dashboard/EditProfile"
           element={<EditProfile student={props.student} />}

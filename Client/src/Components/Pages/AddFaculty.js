@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 
-export default function EditProfile(props) {
+export default function AddStudent() {
   const alertHandler = () => {
     alert("Student Added!");
   };
@@ -35,8 +35,12 @@ export default function EditProfile(props) {
               </div> */}
               <TextField
                 id="standard-basic"
-                sx={{ width: "100%", marginBottom: "15px" }}
-                label="Name"
+                sx={{
+                  width: "100%",
+                  marginBottom: "15px",
+                }}
+                label="First Name"
+                name="fname"
                 color="secondary"
                 variant="outlined"
               />
@@ -56,7 +60,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Father's Name"
+                label="Last Name"
+                name="lname"
                 color="secondary"
                 variant="outlined"
               />
@@ -76,7 +81,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Email"
+                label="Father/Husband Name"
+                name="father/husband name"
                 color="secondary"
                 variant="outlined"
               />
@@ -96,7 +102,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Mobile"
+                label="Nationality"
+                name="nationality"
                 color="secondary"
                 variant="outlined"
               />
@@ -111,7 +118,7 @@ export default function EditProfile(props) {
                   </select>
                 </div>
               </div> */}
-              <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
+              {/*    <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
                 <FormControl fullWidth color="secondary">
                   <InputLabel id="demo-simple-select-label">Program</InputLabel>
                   <Select
@@ -127,7 +134,7 @@ export default function EditProfile(props) {
                     <MenuItem value={15}>MS (IS)</MenuItem>
                   </Select>
                 </FormControl>
-              </Box>
+              </Box> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">
@@ -160,13 +167,48 @@ export default function EditProfile(props) {
                   </select>
                 </div>
               </div> */}
-              <TextField
-                id="standard-basic"
-                sx={{ width: "100%", marginBottom: "15px" }}
-                label="Courses Passed"
-                color="secondary"
-                variant="outlined"
-              />
+              {/*   <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
+                <FormControl fullWidth color="secondary">
+                  <InputLabel id="demo-simple-select-label">
+                    Course Work Completion
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    //value={Program}
+                    label="Course Work Completion"
+                    //onChange={handleChange}
+                  > */}
+              {/* <MenuItem value={12}>PhD (CS)</MenuItem>
+                    <MenuItem value={14}>MS (CS)</MenuItem>
+                    <MenuItem value={15}>MS (SE)</MenuItem>
+                    <MenuItem value={15}>MS (IS)</MenuItem> */}
+              {/*   <MenuItem value="1">N/A</MenuItem>
+                    <MenuItem value="15">SP11</MenuItem>
+                    <MenuItem value="16">FA11</MenuItem>
+                    <MenuItem value="17">SP12</MenuItem>
+                    <MenuItem value="18">FA12</MenuItem>
+                    <MenuItem value="19">SP13</MenuItem>
+                    <MenuItem value="20">FA13</MenuItem>
+                    <MenuItem value="21">SP14</MenuItem>
+                    <MenuItem value="22">FA14</MenuItem>
+                    <MenuItem value="23">SP15</MenuItem>
+                    <MenuItem value="24">FA15</MenuItem>
+                    <MenuItem value="25">SP16</MenuItem>
+                    <MenuItem value="26">FA16</MenuItem>
+                    <MenuItem value="27">SP17</MenuItem>
+                    <MenuItem value="28">FA17</MenuItem>
+                    <MenuItem value="29">SP18</MenuItem>
+                    <MenuItem value="30">FA18</MenuItem>
+                    <MenuItem value="31">SPRING 2019</MenuItem>
+                    <MenuItem value="32">FALL 2019</MenuItem>
+                    <MenuItem value="33">SPRING 2020</MenuItem>
+                    <MenuItem value="1033">FALL 2020</MenuItem>
+                    <MenuItem value="1034">SPRING 2021</MenuItem>
+                    <MenuItem value="1036">FALL 2021</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Status :</div>
@@ -180,7 +222,14 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-
+              <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="City"
+                name="city"
+                color="secondary"
+                variant="outlined"
+              />
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Supervisor :</div>
@@ -234,7 +283,7 @@ export default function EditProfile(props) {
                   </select>
                 </div>
               </div> */}
-              <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
+              {/*    <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
                 <FormControl fullWidth color="secondary">
                   <InputLabel id="demo-simple-select-label">
                     Supervisor
@@ -294,7 +343,7 @@ export default function EditProfile(props) {
                     <MenuItem value="25568">Supervisor</MenuItem>
                   </Select>
                 </FormControl>
-              </Box>
+              </Box> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Co-Supervisor :</div>
@@ -348,7 +397,7 @@ export default function EditProfile(props) {
                   </select>
                 </div>
               </div> */}
-              <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
+              {/*  <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
                 <FormControl fullWidth color="secondary">
                   <InputLabel id="demo-simple-select-label">
                     Co-Supervisor
@@ -408,7 +457,7 @@ export default function EditProfile(props) {
                     <MenuItem value="25568">Supervisor</MenuItem>
                   </Select>
                 </FormControl>
-              </Box>
+              </Box> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Thesis Title :</div>
@@ -425,7 +474,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Synopsis Title"
+                label="Email"
+                name="email"
                 color="secondary"
                 variant="outlined"
               />
@@ -442,24 +492,11 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-              <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
-                <FormControl fullWidth color="secondary">
-                  <InputLabel id="demo-simple-select-label">Program</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Program"
-                  >
-                    <MenuItem value={12}>N/A</MenuItem>
-                    <MenuItem value={14}>Regular</MenuItem>
-                    <MenuItem value={15}>Publication</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Thesis Registration"
+                label="Designation"
+                name="designation"
                 color="secondary"
                 variant="outlined"
               />
@@ -479,7 +516,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Thesis Track"
+                label="Department"
+                name="department"
                 color="secondary"
                 variant="outlined"
               />
@@ -501,7 +539,8 @@ export default function EditProfile(props) {
               <TextField
                 id="standard-basic"
                 sx={{ width: "100%", marginBottom: "15px" }}
-                label="Area of Specialization"
+                label="Campus"
+                name="campus"
                 color="secondary"
                 variant="outlined"
               />
@@ -518,42 +557,13 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-              <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
-                <FormControl fullWidth color="secondary">
-                  <InputLabel id="demo-simple-select-label">
-                    Comprehensive Passing Semester
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Comprehensive Passing Semester"
-                  >
-                    <MenuItem value="1">N/A</MenuItem>
-                    <MenuItem value="15">SP11</MenuItem>
-                    <MenuItem value="16">FA11</MenuItem>
-                    <MenuItem value="17">SP12</MenuItem>
-                    <MenuItem value="18">FA12</MenuItem>
-                    <MenuItem value="19">SP13</MenuItem>
-                    <MenuItem value="20">FA13</MenuItem>
-                    <MenuItem value="21">SP14</MenuItem>
-                    <MenuItem value="22">FA14</MenuItem>
-                    <MenuItem value="23">SP15</MenuItem>
-                    <MenuItem value="24">FA15</MenuItem>
-                    <MenuItem value="25">SP16</MenuItem>
-                    <MenuItem value="26">FA16</MenuItem>
-                    <MenuItem value="27">SP17</MenuItem>
-                    <MenuItem value="28">FA17</MenuItem>
-                    <MenuItem value="29">SP18</MenuItem>
-                    <MenuItem value="30">FA18</MenuItem>
-                    <MenuItem value="31">SPRING 2019</MenuItem>
-                    <MenuItem value="32">FALL 2019</MenuItem>
-                    <MenuItem value="33">SPRING 2020</MenuItem>
-                    <MenuItem value="1033">FALL 2020</MenuItem>
-                    <MenuItem value="1034">SPRING 2021</MenuItem>
-                    <MenuItem value="1036">FALL 2021</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
+              {/* <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="Comprehensive"
+                color="secondary"
+                variant="outlined"
+              /> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Foreign Submission :</div>
@@ -567,32 +577,13 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-              {props.student === "PHD" && (
-                <>
-                  <TextField
-                    id="standard-basic"
-                    sx={{ width: "100%", marginBottom: "15px" }}
-                    label="Total Publication (during PhD)"
-                    color="secondary"
-                    variant="outlined"
-                  />
-                  <TextField
-                    id="standard-basic"
-                    sx={{ width: "100%", marginBottom: "15px" }}
-                    label="Impact Factor Publications (after synopsis approval)"
-                    color="secondary"
-                    variant="outlined"
-                  />
-                  <TextField
-                    id="standard-basic"
-                    sx={{ width: "100%", marginBottom: "15px" }}
-                    label="Other Issue"
-                    color="secondary"
-                    variant="outlined"
-                  />
-                </>
-              )}
-
+              {/*   <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="Foriegn Submission"
+                color="secondary"
+                variant="outlined"
+              /> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Other Issue :</div>
@@ -606,7 +597,13 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-
+              {/*    <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="Other Issue"
+                color="secondary"
+                variant="outlined"
+              /> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Synopsis Status :</div>
@@ -620,7 +617,13 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-
+              {/*   <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="Synopsis Status"
+                color="secondary"
+                variant="outlined"
+              /> */}
               {/* <div className="col-lg-12 mt-2">
                 <div className="row">
                   <div className="col-md-2 col-sm-4">Thesis Status :</div>
@@ -634,7 +637,13 @@ export default function EditProfile(props) {
                   />
                 </div>
               </div> */}
-
+              {/*    <TextField
+                id="standard-basic"
+                sx={{ width: "100%", marginBottom: "15px" }}
+                label="Thesis Status"
+                color="secondary"
+                variant="outlined"
+              /> */}
               {/* <div className="col-lg-12 mt-3 text-center">
                 <button
                   className="btn btn-sm btn-dark"
@@ -649,7 +658,7 @@ export default function EditProfile(props) {
                 </button>
               </div> */}
               <Button variant="contained" size="large" color="secondary">
-                Update Profile
+                Add Faculty
               </Button>
             </div>
           </div>

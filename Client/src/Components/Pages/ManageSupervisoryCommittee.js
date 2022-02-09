@@ -22,7 +22,7 @@ export default function ManageSupervisoryCommittee() {
             <div className="page-body">
               <div className="col-lg-12 mt-2">
                 <div className="row">
-                  <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
+                  {/* <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
                     <FormControl fullWidth color="secondary">
                       <InputLabel id="demo-simple-select-label">
                         Registration No.
@@ -37,7 +37,7 @@ export default function ManageSupervisoryCommittee() {
                         <MenuItem value={12}>SP21-PCS-005</MenuItem>
                       </Select>
                     </FormControl>
-                  </Box>
+                  </Box> */}
 
                   <Box sx={{ minWidth: 120, marginBottom: "15px" }}>
                     <FormControl fullWidth color="secondary">

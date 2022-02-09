@@ -22,11 +22,12 @@ router.post("/signup", async (req, res, next) => {
     } else {
       Student.create({
         ...user,
-        program_id: needs.program._id,
-        supervisor_id: needs.supervisor._id,
-        coSupervisor_id: needs.coSupervisor._id,
-        synopsisSession_id: needs.session._id,
+        // program_id: needs.program?._id,
+        // synopsisSession_id: needs.session._id,
       })
+        /* supervisor_id: needs.supervisor._id,
+        coSupervisor_id: needs.coSupervisor._id, */
+
         .then((student) => {
           console.log("Student created");
           User.register(

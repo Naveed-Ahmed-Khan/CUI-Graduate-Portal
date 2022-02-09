@@ -10,15 +10,16 @@ import SignUp from "./Components/UI/SignUp";
 
 function App() {
   const [user, setUser] = useState("LOGIN");
-  const [student, setStudent] = useState("MS");
+  const [program, setProgram] = useState("PhD");
 
   return (
     <div>
+      {console.log(program)}
       <AdminRoutes
         user={user}
         onLogin={setUser}
-        student={student}
-        onStudent={setStudent}
+        program={program}
+        onProgram={setProgram}
       />
       {/* {user === "LOGIN" && <SignIn onLogIn={setUser} />}
       {user === "SIGNUP" && <SignUp onLogIn={setUser} />}

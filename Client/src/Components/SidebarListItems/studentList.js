@@ -58,7 +58,7 @@ export const MsStudentListitems = [
     path: "/Dashboard/EditProfile",
   },
 
-  {
+  /* {
     text: "View Notification",
     icon: <ManageAccountsIcon />,
     path: "/Dashboard/ViewNotification",
@@ -67,7 +67,7 @@ export const MsStudentListitems = [
     text: "View Announcement",
     icon: <ManageAccountsIcon />,
     path: "/Dashboard/ViewAnnouncement",
-  },
+  }, */
 
   {
     text: "Change Password",
@@ -105,7 +105,7 @@ export const PhdStudentListitems = [
     path: "/Dashboard/EditProfile",
   },
 
-  {
+  /* {
     text: "View Notification",
     icon: <ManageAccountsIcon />,
     path: "/Dashboard/ViewNotification",
@@ -114,7 +114,7 @@ export const PhdStudentListitems = [
     text: "View Announcement",
     icon: <ManageAccountsIcon />,
     path: "/Dashboard/ViewAnnouncement",
-  },
+  }, */
 
   {
     text: "Change Password",
