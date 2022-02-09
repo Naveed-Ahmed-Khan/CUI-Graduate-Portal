@@ -102,6 +102,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   res.statusCode = 200;
   console.log(req.user);
   res.setHeader("Content-Type", "application/json");
+  res.cookie("gp", { email: req.user.email, role: req.user.role });
   res.json({ success: true, message: "logged in", user: req.user });
 });
 
