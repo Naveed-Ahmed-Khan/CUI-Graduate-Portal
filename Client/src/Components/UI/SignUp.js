@@ -54,7 +54,7 @@ export default function SignUp(props) {
         mobile: data.get("Mobile"),
         email: email,
         program: data.get("Program"),
-        userRole: "GAC",
+        userRole: "STUDENT",
         password: "dummy",
       })
       .then((res) => {

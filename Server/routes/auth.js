@@ -50,6 +50,7 @@ router.post("/signup", async (req, res, next) => {
                   res.json({
                     success: true,
                     status: "Registration Successful!",
+                    user: user,
                   });
                 });
               }
@@ -85,6 +86,7 @@ router.post("/signup", async (req, res, next) => {
                 res.json({
                   success: true,
                   status: "Registration Successful!",
+                  user: user,
                 });
               });
             }
@@ -103,7 +105,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   res.statusCode = 200;
   console.log(req.user);
   res.setHeader("Content-Type", "application/json");
-  res.cookie("gp", { email: req.user.email, role: req.user.role });
+
   res.json({ success: true, message: "logged in", user: req.user });
 });
 
@@ -111,8 +113,7 @@ router.get("/logout", (req, res, next) => {
   console.log(req.user);
   if (req.user) {
     req.session.destroy();
-    res.clearCookie("session-id");
-    res.redirect("/auth/login");
+    res.clearCookie("cui-gp-portal");
   } else {
     res.status(401).json({ success: false, message: "You are not logged in!" });
   }
