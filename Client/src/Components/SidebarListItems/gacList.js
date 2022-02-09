@@ -34,14 +34,14 @@ import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HomeIcon from "@mui/icons-material/Home";
 
-export const adminListitems = [
+export const gacListitems = [
   {
     text: "Home",
     icon: <HomeIcon />,
     path: "/Dashboard",
   },
 
-  {
+  /*  {
     text: "Manage Programs",
     icon: <PollIcon />,
     path: "/Dashboard/ManagePrograms",
@@ -69,11 +69,6 @@ export const adminListitems = [
     text: "View Faculty",
     icon: <PreviewIcon />,
     path: "/Dashboard/ViewFaculty",
-  },
-  {
-    text: "Add Faculty",
-    icon: <PreviewIcon />,
-    path: "/Dashboard/AddFaculty",
   },
 
   {
@@ -111,7 +106,7 @@ export const adminListitems = [
     icon: <AddModeratorIcon />,
     path: "/Dashboard/AddSupervisoryCommittee",
   },
-
+ */
   {
     text: "Evaluate Synopsis (MS)",
     icon: <AnalyticsIcon />,
@@ -124,6 +119,22 @@ export const adminListitems = [
     path: "/Dashboard/EvaluateSynopsis(PhD)",
   },
   {
+    text: "Pending Thesis",
+    icon: <EditNotificationsIcon />,
+    path: "/Dashboard/PendingThesis",
+  },
+  {
+    text: "Evaluate Thesis (MS)",
+    icon: <AnalyticsIcon />,
+    path: "/Dashboard/EvaluateThesis(MS)",
+  },
+
+  {
+    text: "Evaluate Thesis (PhD)",
+    icon: <MapIcon />,
+    path: "/Dashboard/EvaluateThesis(PhD)",
+  },
+  /* {
     text: "Manage Notification",
     icon: <EditNotificationsIcon />,
     path: "/Dashboard/ManageNotification",
@@ -146,7 +157,7 @@ export const adminListitems = [
     icon: <ContactMailIcon />,
     path: "/Dashboard/SendNotificationtoAll",
   },
-
+ */
   {
     text: "View MS Student Details",
     icon: <PageviewIcon />,

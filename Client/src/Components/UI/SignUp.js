@@ -20,64 +20,66 @@ import Select from "@mui/material/Select";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DialogueSelect from "./RegiNumberDialog";
-/* 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-} */
 
 const theme = createTheme();
 
 export default function SignUp(props) {
+  const [email, setEmail] = React.useState("");
   const [regNumber, setRegNumber] = React.useState({
-    session: "",
-    sessionNumber: "",
-    program: "",
-    regNumber: "",
+    session: "--",
+    year: "--",
+    discipline: "--",
+    rollNo: "--",
   });
+
+  const handleChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const regNo = `${regNumber.session}${regNumber.year}-${regNumber.discipline}-${regNumber.rollNo}`;
+  const mail = `${regNo}@student.comsats.edu.pk`;
+  const isbMail = `${regNo}@isbstudent.comsats.edu.pk`;
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    axios.post("/", {
-      /* email: userEmail,
-      password: userPassword, */
-    });
+    const program = data.get("Program");
+    props.onProgram(program);
+    axios
+      .post("http://localhost:3000/auth/signup", {
+        registrationNo: regNo,
+        username: data.get("Name"),
+        fatherName: data.get("Father'sName"),
+        mobile: data.get("Mobile"),
+        email: email,
+        program: data.get("Program"),
+        userRole: "GAC",
+        password: "dummy",
+      })
+      .then((res) => {
+        console.log(res /*.data  .user.userRole[0].role */);
+        /* const data = res.data.user; */
+        /* props.onProgram(program); */
+        props.onLogin(res.data.user.userRole[0].role);
+        navigate("/Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // eslint-disable-next-line no-console
-    props.onLogIn("STUD");
-    navigate("/");
 
     console.log({
-      regNumber: data.get("RegistrationNumber"),
-      password: data.get("Name"),
-      fathersName: data.get("Father'sName"),
-      email: data.get("EmailAddress"),
-      currentSemester: data.get("CurrentSemester"),
-      courseCompletion: data.get("CourseWorkCompletion"),
-      coursesPassed: data.get("CoursesPassed"),
-      supervisor: data.get("Supervisor"),
-      coSupervisor: data.get("Co-Supervisor"),
-      session: data.get("Co-Supervisor"),
-      synopsisTitle: data.get("Synopsis/ThesisTitle"),
-      synopsisTrack: data.get("SynopsisTrack"),
-      date: data.get("Date"),
+      registrationNo: regNo,
+      username: data.get("Name"),
+      fatherName: data.get("Father'sName"),
+      mobile: data.get("Mobile"),
+      email: email,
+      program: data.get("Program"),
     });
+
+    navigate("/");
   };
 
   return (
@@ -115,11 +117,90 @@ export default function SignUp(props) {
           >
             <Grid container spacing={2}>
               <Grid item sx={{ mb: [1] }} md={12} xs={12}>
-                <DialogueSelect onRegNum={setRegNumber} />
+                <DialogueSelect
+                  onRegNum={setRegNumber}
+                  /* onProgram={props.onProgram} */
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Program</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="Program"
+                    name="Program"
+                    //value={Program}
+                    label="Program"
+                    //onChange={handleChange}
+                  >
+                    <MenuItem value={"PhD"}>PhD</MenuItem>
+                    <MenuItem value={"MS"}>MS</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="Name"
+                  label="Name"
+                  name="Name"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="Father'sName"
+                  label="Father's Name"
+                  name="Father'sName"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid Grid item md={12} xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Email</InputLabel>
+                  <Select
+                    /* disabled */
+                    labelId="demo-simple-select-label"
+                    id="Email"
+                    name="Email"
+                    /*  defaultValue={mail} */
+                    value={email}
+                    onChange={handleChange}
+                    label="Email"
+                  >
+                    <MenuItem value={mail}>{mail}</MenuItem>
+                    <MenuItem value={isbMail}>{isbMail}</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
-              <Grid container sx={{ marginLeft: "16px" }} md={12} xs={12}>
-                <FormControl fullWidth>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="Mobile"
+                  label="Mobile"
+                  id="Mobile"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              {/* <Grid item xs={12}>
+                <TextField
+                  
+                  value={String(regNumber)}
+                  fullWidth
+                  id="EmailAddress"
+                  placeholder={`${regNumber.program}${regNumber.session}-${regNumber.discipline}-${regNumber.rollNo}`}
+                  label="E-Mail"
+                  name="EmailAddress"
+                  autoComplete="email"
+                />
+              </Grid> */}
+              {/* <Grid container sx={{ marginLeft: "16px" }} md={12} xs={12}> */}
+              {/* <FormControl fullWidth>
                   <InputLabel placeholder="SP/FA" id="demo-simple-select-label">
                     Category
                   </InputLabel>
@@ -137,7 +218,7 @@ export default function SignUp(props) {
                     <MenuItem value={"MS"}>MS</MenuItem>
                   </Select>
                 </FormControl>
-              </Grid>
+              </Grid> */}
 
               {/* <Grid container className="input">
                 <Grid item md={12} xs={12}>
@@ -226,46 +307,6 @@ export default function SignUp(props) {
                 </Grid>
               </Grid> */}
 
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="Name"
-                  label="Name"
-                  name="Name"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="Father'sName"
-                  label="Father's Name"
-                  name="Father'sName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="EmailAddress"
-                  label="Email Address"
-                  name="EmailAddress"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="Mobile"
-                  label="Mobile"
-                  id="Mobile"
-                  autoComplete="new-password"
-                />
-              </Grid>
               {/* <Grid item xs={12}>
                 <TextField
                   required

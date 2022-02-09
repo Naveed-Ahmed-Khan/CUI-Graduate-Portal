@@ -97,7 +97,7 @@ export default function ChangePassword() {
                     Submit
                   </button> */}
                 <Button variant="contained" size="large" color="secondary">
-                  Submit
+                  Update Password
                 </Button>
               </form>
             </div>

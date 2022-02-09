@@ -19,9 +19,17 @@ import { preventOverflow } from "@popperjs/core";
 export default function DialogSelect(props) {
   const [open, setOpen] = React.useState(false);
   const [age, setAge] = React.useState("");
+  let data = {
+    program: "--",
+    session: "--",
+    discipline: "--",
+    rollNo: "--",
+  };
 
   const handleChange = (event) => {
-    setAge(Number(event.target.value) || "");
+    /* props.onRegNum({ data[event.target.name]: event.target.value }); */
+    data[event.target.name] = event.target.value;
+    console.log(data);
   };
 
   const handleClickOpen = () => {
@@ -31,7 +39,8 @@ export default function DialogSelect(props) {
   const handleClose = (event, reason) => {
     /* const data = new FormData(event.currentTarget);
     const a = data.get("age"); */
-
+    // props.onProgram(data.program);
+    props.onRegNum(data);
     if (reason !== "backdropClick") {
       setOpen(false);
     }
@@ -39,45 +48,69 @@ export default function DialogSelect(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>Open select dialog</Button>
+      <Button fullWidth variant="outlined" onClick={handleClickOpen}>
+        Enter Registration Number Here
+      </Button>
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent>
           <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">Session</InputLabel>
               <Select
-                name="age"
-                native
-                value={age}
-                onChange={(e) => {
-                  props.onRegNum({ session: e.target.value });
-                }}
-                input={<OutlinedInput label="Age" id="demo-dialog-native" />}
-              >
-                <option aria-label="None" value="" />
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-dialog-select-label">Age</InputLabel>
-              <Select
-                labelId="demo-dialog-select-label"
-                id="demo-dialog-select"
-                value={age}
+                labelId="demo-simple-select-label"
+                id="session"
+                name="session"
+                variant="standard"
+                defaultValue=""
+                /* value="" */
+                label="session"
                 onChange={handleChange}
-                input={<OutlinedInput label="Age" />}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {/* <MenuItem value="">
+                  <em>-</em>
+                </MenuItem> */}
+                <MenuItem value={"SP"}>SP</MenuItem>
+                <MenuItem value={"FA"}>FA</MenuItem>
               </Select>
             </FormControl>
+            <TextField
+              sx={{ m: 1, maxWidth: 120 }}
+              autoComplete="given-name"
+              name="year"
+              variant="standard"
+              placeholder="00"
+              id="year"
+              label="Year"
+              onChange={handleChange}
+            />
+
+            <FormControl sx={{ m: 1, width: 120 }}>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="discipline"
+                name="discipline"
+                variant="standard"
+                /* value="" */
+                label="Discipline"
+                onChange={handleChange}
+              >
+                <MenuItem value={"CS"}>CS</MenuItem>
+                <MenuItem value={"SE"}>SE</MenuItem>
+                <MenuItem value={"IS"}>IS</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              sx={{ m: 1, width: 120 }}
+              autoComplete="given-name"
+              name="rollNo"
+              variant="standard"
+              placeholder="000"
+              id="rollNo"
+              label="Roll No."
+              onChange={handleChange}
+            />
           </Box>
         </DialogContent>
         <DialogActions>

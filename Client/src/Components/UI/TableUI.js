@@ -9,7 +9,7 @@ export default function DataTable(props) {
         columns={props.header}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
+        /* checkboxSelection */
       />
     </div>
   );

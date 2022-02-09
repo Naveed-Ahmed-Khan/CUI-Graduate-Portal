@@ -42,6 +42,7 @@ import {
   MsStudentListitems,
   PhdStudentListitems,
 } from "../SidebarListItems/studentList";
+import { gacListitems } from "../SidebarListItems/gacList";
 
 export const Sidebar = (props) => {
   const navigate = useNavigate();
@@ -75,11 +76,12 @@ export const Sidebar = (props) => {
   return (
     <div>
       {props.onUser === "ADMIN" && adminListitems.map(checkUser)}
+      {props.onUser === "GAC" && gacListitems.map(checkUser)}
       {props.onUser === "STUDENT" &&
-        props.student === "MS" &&
+        props.program === "MS" &&
         MsStudentListitems.map(checkUser)}
       {props.onUser === "STUDENT" &&
-        props.student === "PHD" &&
+        props.program === "PhD" &&
         PhdStudentListitems.map(checkUser)}
       {/* {props.onUser === "ADMIN" && adminListitems.map(checkUser)} */}
 

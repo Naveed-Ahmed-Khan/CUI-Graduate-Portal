@@ -57,6 +57,7 @@ export default function SignIn(props) {
         console.log(res /*.data  .user.userRole[0].role */);
         const data = res.data.user;
         props.onLogin(res.data.user.userRole[0].role);
+        /* props.onLogin("GAC"); */
         navigate("/Dashboard");
       })
       .catch((err) => {
