@@ -1,109 +1,56 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Button, Box } from "@mui/material";
 
 export default function ChangePassword() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Submitted");
+    const data = new FormData(event.currentTarget);
+    const userEmail = data.get("email");
+    const userPassword = data.get("password");
+    /* axios.post("http://localhost:3000/auth/login", {
+        email: userEmail,
+        password: userPassword,
+      })
+      .then((res) => {
+        const data = res.data.user;
+	console.log(data);
+        navigate("/Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
+  };
   return (
-    <div class="pcoded-content">
-      {/* Page-header ends */}
-      <div className="pcoded-inner-content">
-        {/* Main-body start */}
-        <div className="main-body ">
-          <div className="page-wrapper dashboardHeight">
-            {/* Page-body start */}
-            <div className="page-body">
-              <form action="action_page.php">
-                {/* <label for="fname">Old Password</label>
-                  <input
-                    style={{
-                      width: "100%",
-                      padding: "12px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      boxSizing: "border-box",
-                      marginTop: "6px",
-                      marginBottom: "16px",
-                      resize: "vertical",
-                    }}
-                    type="text"
-                    id="fname"
-                    name="firstname"
-                    placeholder=""
-                  /> */}
-                <TextField
-                  id="standard-basic"
-                  sx={{ width: "100%", marginBottom: "15px" }}
-                  label="Old Password"
-                  color="secondary"
-                  variant="outlined"
-                />
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+      <TextField
+        id="standard-basic"
+        sx={{ width: "100%", marginBottom: "15px" }}
+        label="Old Password"
+        color="secondary"
+        variant="outlined"
+      />
 
-                {/* <label for="lname">New Password</label>
-                  <input
-                    style={{
-                      width: "100%",
-                      padding: "12px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      boxSizing: "border-box",
-                      marginTop: "6px",
-                      marginBottom: "16px",
-                      resize: "vertical",
-                    }}
-                    type="text"
-                    id="lname"
-                    name="lastname"
-                    placeholder=""
-                  /> */}
-                <TextField
-                  id="standard-basic"
-                  sx={{ width: "100%", marginBottom: "15px" }}
-                  label="New Password"
-                  color="secondary"
-                  variant="outlined"
-                />
+      <TextField
+        id="standard-basic"
+        sx={{ width: "100%", marginBottom: "15px" }}
+        label="New Password"
+        color="secondary"
+        variant="outlined"
+      />
 
-                {/* <label for="lname">Confirm Password</label>
-                  <input
-                    style={{
-                      width: "100%",
-                      padding: "12px",
-                      border: "1px solid #ccc",
-                      borderRadius: "4px",
-                      boxSizing: "border-box",
-                      marginTop: "6px",
-                      marginBottom: "16px",
-                      resize: "vertical",
-                    }}
-                    type="text"
-                    id="lname"
-                    name="lastname"
-                    placeholder=""
-                  /> */}
-                <TextField
-                  id="standard-basic"
-                  sx={{ width: "100%", marginBottom: "15px" }}
-                  label="Confirm Password"
-                  color="secondary"
-                  variant="outlined"
-                />
+      <TextField
+        id="standard-basic"
+        sx={{ width: "100%", marginBottom: "15px" }}
+        label="Confirm Password"
+        color="secondary"
+        variant="outlined"
+      />
 
-                {/* <button
-                    className="btn btn-sm btn-dark"
-                    type="number"
-                    min={0}
-                    name="tutionFeePaid"
-                  >
-                    Submit
-                  </button> */}
-                <Button variant="contained" size="large" color="secondary">
-                  Update Password
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <Button type="submit" variant="contained" size="large" color="secondary">
+        Update Password
+      </Button>
+    </Box>
   );
 }
