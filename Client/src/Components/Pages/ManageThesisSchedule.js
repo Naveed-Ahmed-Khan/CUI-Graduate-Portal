@@ -1,32 +1,31 @@
 import React from "react";
-
 import { programWiseData, programWiseHeader } from "../DummyData/DummyData";
 import DataTable from "../UI/TableUI";
 
 export default function ManageThesisSchedule() {
+  /* const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Submitted")
+    const data = new FormData(event.currentTarget);
+    const userEmail = data.get("email");
+    const userPassword = data.get("password");
+    axios.post("http://localhost:3000/auth/login", {
+        email: userEmail,
+        password: userPassword,
+      })
+      .then((res) => {
+        const data = res.data.user;
+	console.log(data);
+        navigate("/Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });}; */
   return (
-    <div class="pcoded-content">
-      {/* Page-header ends */}
-      <div className="pcoded-inner-content">
-        {/* Main-body start */}
-        <div className="main-body ">
-          <div className="page-wrapper dashboardHeight">
-            {/* Page-body start */}
-            <div className="page-body">
-              <div className="col-md-2 col-sm-4">View Schedule :</div>
-              <div className="col-lg-12 mt-2">
-                <DataTable header={programWiseHeader} data={programWiseData} />
-                {/* <Table
-                  columns={columns}
-                  data={[]}
-                  footer={true}
-                  isLoading={false}
-                /> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <div className="col-md-2 col-sm-4">View Schedule :</div>
+
+      <DataTable header={programWiseHeader} data={programWiseData} />
+    </>
   );
 }

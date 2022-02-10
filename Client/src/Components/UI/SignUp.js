@@ -40,6 +40,7 @@ export default function SignUp(props) {
   const isbMail = `${regNo}@isbstudent.comsats.edu.pk`;
 
   const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -580,7 +581,6 @@ export default function SignUp(props) {
           </Box>
         </Box>
         {console.log(regNumber)}
-        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
   );

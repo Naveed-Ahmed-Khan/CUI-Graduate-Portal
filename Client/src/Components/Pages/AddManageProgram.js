@@ -46,19 +46,6 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Long Name :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="text"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
         <TextField
           id="standard-basic"
           color="secondary"
@@ -67,19 +54,6 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Description :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="text"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
         <TextField
           id="standard-basic"
           color="secondary"
@@ -88,20 +62,6 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        {/* <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Min Semesters :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="number"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
-
         <TextField
           id="standard-basic"
           color="secondary"
@@ -109,20 +69,6 @@ export default function AddManageProgram() {
           label="Min Semesters"
           variant="outlined"
         />
-
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Max Semesters :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="number"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
 
         <TextField
           id="standard-basic"
@@ -132,20 +78,6 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Duration (Years) :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="number"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
-
         <TextField
           id="standard-basic"
           color="secondary"
@@ -154,19 +86,6 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Credits :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="number"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
         <TextField
           id="standard-basic"
           color="secondary"
@@ -174,19 +93,6 @@ export default function AddManageProgram() {
           label="Credits"
           variant="outlined"
         />
-        {/*               <div className="col-lg-12 mt-2">
-                <div className="row">
-                  <div className="col-md-2 col-sm-4">Enable :</div>
-                  <input
-                    className="form-control form-control-sm  col-md-10 col-sm-8"
-                    type="text"
-                    min={0}
-                    name="tutionFeePaid"
-                    // value={saveModal.tutionFeePaid}
-                    // onChange={this.changeHandler}
-                  />
-                </div>
-              </div> */}
 
         <TextField
           id="standard-basic"
@@ -196,22 +102,14 @@ export default function AddManageProgram() {
           variant="outlined"
         />
 
-        <div className="col-lg-12 mt-3 text-center">
-          <Button variant="contained" color="secondary" size="large">
-            Add Program
-          </Button>
-          {/*                 <button
-                  className="btn btn-sm btn-dark"
-                  type="number"
-                  min={0}
-                  name="tutionFeePaid"
-                  // value={saveModal.tutionFeePaid}
-                  // onChange={this.changeHandler}
-                  onClick={alertHandler}
-                >
-                  Add Program
-                </button> */}
-        </div>
+        <Button
+          type="submit"
+          variant="contained"
+          color="secondary"
+          size="large"
+        >
+          Add Program
+        </Button>
       </Box>
     </>
   );
