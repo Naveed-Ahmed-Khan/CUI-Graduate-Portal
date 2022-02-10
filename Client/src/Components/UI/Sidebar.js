@@ -23,9 +23,11 @@ import PreviewIcon from "@mui/icons-material/Preview";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import PollIcon from "@mui/icons-material/Poll";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
 import ListSubheader from "@mui/material/ListSubheader";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -35,6 +37,8 @@ import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useLocation } from "react-router-dom";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import "./ActiveTab.css";
 import { adminListitems } from "../SidebarListItems/adminList";
 import { useNavigate } from "react-router-dom";
@@ -45,33 +49,92 @@ import {
 import { gacListitems } from "../SidebarListItems/gacList";
 
 export const Sidebar = (props) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = (item) => {
+    setOpen(!item);
+    console.log(open);
+  };
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const checkUser = (item) => {
     return (
-      <div className={location.pathname === item.path ? "tab" : "tabhover"}>
-        <ListItem
-          key={item.text}
-          button
-          onClick={() => {
-            navigate(item.path);
-          }}
-        >
-          <ListItemIcon className={location.pathname === item.path && "icon"}>
-            {item.icon}
-          </ListItemIcon>
-          <ListItemText primary={item.text} />
-        </ListItem>
-      </div>
+      <>
+        {!item.subMenu ? (
+          <>
+            Not Submenu
+            <div
+              className={location.pathname === item.path ? "tab" : "tabhover"}
+            >
+              <ListItem
+                key={item.text}
+                button
+                onClick={() => {
+                  navigate(item.path);
+                }}
+              >
+                <ListItemIcon
+                  className={location.pathname === item.path && "icon"}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </div>
+          </>
+        ) : (
+          <>
+            SubMenu
+            <ListItem
+              key={item.text}
+              button
+              onClick={() => {
+                item.active = !item.active;
+                setOpen(!open);
+                console.log(item.active);
+              }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+              {item.active ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={item.active} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {item.subMenu.map((subItem) => {
+                  return (
+                    <div
+                      className={
+                        location.pathname === subItem.path ? "tab" : "tabhover"
+                      }
+                    >
+                      <ListItem
+                        key={subItem.text}
+                        button
+                        onClick={() => {
+                          navigate(subItem.path);
+                        }}
+                      >
+                        <ListItemIcon
+                          className={
+                            location.pathname === subItem.path && "icon"
+                          }
+                        >
+                          {subItem.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={subItem.text} />
+                      </ListItem>
+                    </div>
+                  );
+                })}
+              </List>
+            </Collapse>
+          </>
+        )}
+      </>
     );
   };
-
-  /*  const User = (person) => {
-    if (person === "ADMIN") {
-      return console.log("Hello");
-    }
-  }; */
 
   return (
     <div>

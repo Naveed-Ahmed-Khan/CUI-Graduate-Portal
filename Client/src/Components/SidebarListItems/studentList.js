@@ -40,16 +40,39 @@ export const MsStudentListitems = [
     icon: <HomeIcon />,
     path: "/Dashboard",
   },
-
   {
-    text: "Synopsis Submission",
+    text: "Submission",
     icon: <PollIcon />,
-    path: "/Dashboard/SynopsisSubmission",
+    active: false,
+    subMenu: [
+      {
+        text: "Synopsis Submission",
+        icon: <PollIcon />,
+        path: "/Dashboard/SynopsisSubmission",
+      },
+      {
+        text: "Thesis Submission",
+        icon: <PollIcon />,
+        path: "/Dashboard/ThesisSubmission",
+      },
+    ],
   },
   {
-    text: "Thesis Submission",
+    text: "Test Submission",
     icon: <PollIcon />,
-    path: "/Dashboard/ThesisSubmission",
+    active: false,
+    subMenu: [
+      {
+        text: "Synopsis Submission",
+        icon: <PollIcon />,
+        path: "/Dashboard/SynopsisSubmission",
+      },
+      {
+        text: "Thesis Submission",
+        icon: <PollIcon />,
+        path: "/Dashboard/ThesisSubmission",
+      },
+    ],
   },
 
   {
