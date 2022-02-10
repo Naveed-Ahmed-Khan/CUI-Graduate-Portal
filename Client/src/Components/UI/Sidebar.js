@@ -64,7 +64,6 @@ export const Sidebar = (props) => {
       <>
         {!item.subMenu ? (
           <>
-            Not Submenu
             <div
               className={location.pathname === item.path ? "tab" : "tabhover"}
             >
@@ -80,13 +79,12 @@ export const Sidebar = (props) => {
                 >
                   {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={item.text} />
+                <ListItemText sx={{ fontSize: "6px" }} primary={item.text} />
               </ListItem>
             </div>
           </>
         ) : (
           <>
-            SubMenu
             <ListItem
               key={item.text}
               button

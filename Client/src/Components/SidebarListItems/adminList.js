@@ -33,6 +33,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
 
 export const adminListitems = [
   {
@@ -42,156 +43,227 @@ export const adminListitems = [
   },
 
   {
-    text: "Manage Programs",
-    icon: <PollIcon />,
-    path: "/Dashboard/ManagePrograms",
+    text: "Program",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Programs",
+        icon: <PollIcon />,
+        path: "/Dashboard/ManagePrograms",
+      },
+
+      {
+        text: "Add Programs",
+        icon: <AddBoxIcon />,
+        path: "/Dashboard/AddPrograms",
+      },
+    ],
   },
 
   {
-    text: "Add Programs",
-    icon: <AddBoxIcon />,
-    path: "/Dashboard/AddPrograms",
+    text: "Session",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Session",
+        icon: <ManageAccountsIcon />,
+        path: "/Dashboard/ManageSessions",
+      },
+
+      {
+        text: "Add Sessions",
+        icon: <AddCircleIcon />,
+        path: "/Dashboard/AddSessions",
+      },
+    ],
   },
 
   {
-    text: "Manage Session",
-    icon: <ManageAccountsIcon />,
-    path: "/Dashboard/ManageSessions",
+    text: "Faculty",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "View Faculty",
+        icon: <PreviewIcon />,
+        path: "/Dashboard/ViewFaculty",
+      },
+      {
+        text: "Add Faculty",
+        icon: <PreviewIcon />,
+        path: "/Dashboard/AddFaculty",
+      },
+    ],
   },
 
   {
-    text: "Add Sessions",
-    icon: <AddCircleIcon />,
-    path: "/Dashboard/AddSessions",
+    text: "Student",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Students",
+        icon: <LayersIcon />,
+        path: "/Dashboard/ManageStudents",
+      },
+
+      {
+        text: "Add Student",
+        icon: <PersonAddIcon />,
+        path: "/Dashboard/AddStudent",
+      },
+    ],
   },
 
   {
-    text: "View Faculty",
-    icon: <PreviewIcon />,
-    path: "/Dashboard/ViewFaculty",
-  },
-  {
-    text: "Add Faculty",
-    icon: <PreviewIcon />,
-    path: "/Dashboard/AddFaculty",
+    text: "Progress Report",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Report",
+        icon: <DonutSmallIcon />,
+        path: "/Dashboard/ManageProgressReport",
+      },
+
+      {
+        text: "Add Report",
+        icon: <AutoStoriesIcon />,
+        path: "/Dashboard/AddProgressReport",
+      },
+    ],
   },
 
   {
-    text: "Manage Students",
-    icon: <LayersIcon />,
-    path: "/Dashboard/ManageStudents",
+    text: "Supervisory Committee",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Committee",
+        icon: <DashboardIcon />,
+        path: "/Dashboard/ManageSupervisoryCommittee",
+      },
+
+      {
+        text: "Add Committee",
+        icon: <AddModeratorIcon />,
+        path: "/Dashboard/AddSupervisoryCommittee",
+      },
+    ],
   },
 
   {
-    text: "Add Student",
-    icon: <PersonAddIcon />,
-    path: "/Dashboard/AddStudent",
+    text: "Evaluate Synopsis",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Synopsis (MS)",
+        icon: <AnalyticsIcon />,
+        path: "/Dashboard/EvaluateSynopsis(MS)",
+      },
+
+      {
+        text: "Synopsis (PhD)",
+        icon: <MapIcon />,
+        path: "/Dashboard/EvaluateSynopsis(PhD)",
+      },
+    ],
   },
 
   {
-    text: "Manage Progress Report",
-    icon: <DonutSmallIcon />,
-    path: "/Dashboard/ManageProgressReport",
+    text: "Notification",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Manage Notification",
+        icon: <EditNotificationsIcon />,
+        path: "/Dashboard/ManageNotification",
+      },
+
+      {
+        text: "Send Notification (PhD)",
+        icon: <CampaignIcon />,
+        path: "/Dashboard/SendNotification(PhD)",
+      },
+
+      {
+        text: "Send Notification (MS)",
+        icon: <NotificationsActiveIcon />,
+        path: "/Dashboard/SendNotification(MS)",
+      },
+
+      {
+        text: "Send Notification to All",
+        icon: <ContactMailIcon />,
+        path: "/Dashboard/SendNotificationtoAll",
+      },
+    ],
   },
 
   {
-    text: "Add Progress Report",
-    icon: <AutoStoriesIcon />,
-    path: "/Dashboard/AddProgressReport",
+    text: "View Student Details",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "MS Students",
+        icon: <PageviewIcon />,
+        path: "/Dashboard/ViewMSStudentDetails",
+      },
+
+      {
+        text: "PhD Students",
+        icon: <ContentPasteSearchIcon />,
+        path: "/Dashboard/ViewPhDStudentDetails",
+      },
+    ],
   },
 
   {
-    text: "Manage Supervisory Committee",
-    icon: <DashboardIcon />,
-    path: "/Dashboard/ManageSupervisoryCommittee",
-  },
+    text: "Reports",
+    icon: <ListIcon />,
+    active: false,
+    subMenu: [
+      {
+        text: "Supervisor's Report",
+        icon: <PeopleIcon />,
+        path: "/Dashboard/Supervisor'sReport",
+      },
+      {
+        text: "Program-Wise Report",
+        icon: <LeaderboardIcon />,
+        path: "/Dashboard/Program-WiseReport",
+      },
 
-  {
-    text: "Add Supervisory Committee",
-    icon: <AddModeratorIcon />,
-    path: "/Dashboard/AddSupervisoryCommittee",
-  },
+      {
+        text: "Thesis-Wise Report",
+        icon: <TableChartIcon />,
+        path: "/Dashboard/Thesis-WiseReport",
+      },
 
-  {
-    text: "Evaluate Synopsis (MS)",
-    icon: <AnalyticsIcon />,
-    path: "/Dashboard/EvaluateSynopsis(MS)",
-  },
+      {
+        text: "Synopsis-Wise Report",
+        icon: <PieChartIcon />,
+        path: "/Dashboard/Synopsis-WiseReport",
+      },
 
-  {
-    text: "Evaluate Synopsis (PhD)",
-    icon: <MapIcon />,
-    path: "/Dashboard/EvaluateSynopsis(PhD)",
-  },
-  {
-    text: "Manage Notification",
-    icon: <EditNotificationsIcon />,
-    path: "/Dashboard/ManageNotification",
-  },
+      {
+        text: "Supervisor/Program-Wise Report",
+        icon: <FindInPageIcon />,
+        path: "/Dashboard/ViewSupervisorProgram-WiseReport",
+      },
 
-  {
-    text: "Send Notification (PhD)",
-    icon: <CampaignIcon />,
-    path: "/Dashboard/SendNotification(PhD)",
-  },
-
-  {
-    text: "Send Notification (MS)",
-    icon: <NotificationsActiveIcon />,
-    path: "/Dashboard/SendNotification(MS)",
-  },
-
-  {
-    text: "Send Notification to All",
-    icon: <ContactMailIcon />,
-    path: "/Dashboard/SendNotificationtoAll",
-  },
-
-  {
-    text: "View MS Student Details",
-    icon: <PageviewIcon />,
-    path: "/Dashboard/ViewMSStudentDetails",
-  },
-
-  {
-    text: "View PhD Student Details",
-    icon: <ContentPasteSearchIcon />,
-    path: "/Dashboard/ViewPhDStudentDetails",
-  },
-
-  {
-    text: "Supervisor's Report",
-    icon: <PeopleIcon />,
-    path: "/Dashboard/Supervisor'sReport",
-  },
-  {
-    text: "Program-Wise Report",
-    icon: <LeaderboardIcon />,
-    path: "/Dashboard/Program-WiseReport",
-  },
-
-  {
-    text: "Thesis-Wise Report",
-    icon: <TableChartIcon />,
-    path: "/Dashboard/Thesis-WiseReport",
-  },
-
-  {
-    text: "Synopsis-Wise Report",
-    icon: <PieChartIcon />,
-    path: "/Dashboard/Synopsis-WiseReport",
-  },
-
-  {
-    text: "View Supervisor/Program-Wise Report",
-    icon: <FindInPageIcon />,
-    path: "/Dashboard/ViewSupervisorProgram-WiseReport",
-  },
-
-  {
-    text: "Session-Wise Report",
-    icon: <ScreenSearchDesktopIcon />,
-    path: "/Dashboard/Session-WiseReport",
+      {
+        text: "Session-Wise Report",
+        icon: <ScreenSearchDesktopIcon />,
+        path: "/Dashboard/Session-WiseReport",
+      },
+    ],
   },
 
   {

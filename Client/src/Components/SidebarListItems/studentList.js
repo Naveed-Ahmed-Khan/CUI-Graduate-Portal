@@ -57,23 +57,6 @@ export const MsStudentListitems = [
       },
     ],
   },
-  {
-    text: "Test Submission",
-    icon: <PollIcon />,
-    active: false,
-    subMenu: [
-      {
-        text: "Synopsis Submission",
-        icon: <PollIcon />,
-        path: "/Dashboard/SynopsisSubmission",
-      },
-      {
-        text: "Thesis Submission",
-        icon: <PollIcon />,
-        path: "/Dashboard/ThesisSubmission",
-      },
-    ],
-  },
 
   {
     text: "Edit Profile",
