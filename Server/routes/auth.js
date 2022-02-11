@@ -5,6 +5,7 @@ const Student = require("../models/student");
 var passport = require("passport");
 const helpers = require("../helpers/helpers");
 const Faculty = require("../models/faculty");
+const auth = require("../auth/authenticate");
 
 router.post("/signup", async (req, res, next) => {
   const user = req.body;
@@ -102,11 +103,15 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
+  var token = auth.getToken({ _id: req.user._id });
   res.statusCode = 200;
-  console.log(req.user);
   res.setHeader("Content-Type", "application/json");
-
-  res.json({ success: true, message: "logged in", user: req.user });
+  res.json({
+    success: true,
+    token: token,
+    status: "You are successfully logged in!",
+    user: req.user,
+  });
 });
 
 router.get("/logout", (req, res, next) => {
