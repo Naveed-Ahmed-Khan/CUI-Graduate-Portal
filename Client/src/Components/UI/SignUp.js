@@ -20,7 +20,7 @@ import Select from "@mui/material/Select";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser, setUserProgram } from "../../Store/User";
+import { setUser, setUserProgram } from "../../Store/user";
 import DialogueSelect from "./RegiNumberDialog";
 
 const theme = createTheme();

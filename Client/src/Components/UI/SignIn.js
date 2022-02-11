@@ -16,7 +16,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../Store/User";
+import { setUser } from "../../Store/user";
+import { Login } from "../../Store/auth";
 
 /* function Copyright(props) {
   return (
@@ -52,8 +53,15 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     const userEmail = data.get("email");
     const userPassword = data.get("password");
-
-    axios
+    dispatch(Login({ userEmail, userPassword }))
+      .then((res) => {
+        console.log(res);
+        navigate("/Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    /* axios
       .post("http://localhost:3000/auth/login", {
         email: userEmail,
         password: userPassword,
@@ -65,7 +73,7 @@ export default function SignIn() {
       })
       .catch((err) => {
         console.log(err);
-      });
+      }); */
 
     /* if (email === "admin") {
       props.onLogin("GAC");
