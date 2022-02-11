@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Avatar } from "@mui/material/Avatar";
+
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -8,13 +8,15 @@ import Checkbox from "@mui/material/Checkbox";
 /* import Link from "@mui/material/Link"; */
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 /* import Link from "react-router-dom" */
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../Store/User";
 
 /* function Copyright(props) {
   return (
@@ -36,7 +38,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
-export default function SignIn(props) {
+export default function SignIn() {
+  /* const user = useSelector((state) => state.changeUser); */
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,10 +59,8 @@ export default function SignIn(props) {
         password: userPassword,
       })
       .then((res) => {
-        console.log(res /*.data  .user.userRole[0].role */);
-        const data = res.data.user;
-        props.onLogin(res.data.user.userRole[0].role);
-        /* props.onLogin("GAC"); */
+        const userRole = res.data.user.userRole[0].role;
+        dispatch(setUser(userRole));
         navigate("/Dashboard");
       })
       .catch((err) => {
@@ -165,7 +168,6 @@ export default function SignIn(props) {
             </Grid>
           </Box>
         </Box>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
   );

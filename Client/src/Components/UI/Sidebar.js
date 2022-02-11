@@ -42,13 +42,16 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import "./ActiveTab.css";
 import { adminListitems } from "../SidebarListItems/adminList";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   MsStudentListitems,
   PhdStudentListitems,
 } from "../SidebarListItems/studentList";
 import { gacListitems } from "../SidebarListItems/gacList";
 
-export const Sidebar = (props) => {
+export const Sidebar = () => {
+  const { userRole, userProgram } = useSelector((state) => state.user);
+
   const [open, setOpen] = React.useState(false);
 
   const handleClick = (item) => {
@@ -136,13 +139,13 @@ export const Sidebar = (props) => {
 
   return (
     <div>
-      {props.onUser === "ADMIN" && adminListitems.map(checkUser)}
-      {props.onUser === "GAC" && gacListitems.map(checkUser)}
-      {props.onUser === "STUDENT" &&
-        props.program === "MS" &&
+      {userRole === "ADMIN" && adminListitems.map(checkUser)}
+      {userRole === "GAC" && gacListitems.map(checkUser)}
+      {userRole === "STUDENT" &&
+        userProgram === "MS" &&
         MsStudentListitems.map(checkUser)}
-      {props.onUser === "STUDENT" &&
-        props.program === "PhD" &&
+      {userRole === "STUDENT" &&
+        userProgram === "PhD" &&
         PhdStudentListitems.map(checkUser)}
       {/* {props.onUser === "ADMIN" && adminListitems.map(checkUser)} */}
 

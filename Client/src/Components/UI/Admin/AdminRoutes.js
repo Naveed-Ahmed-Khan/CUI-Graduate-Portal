@@ -44,22 +44,10 @@ import AddFaculty from "../../Pages/AddFaculty";
 const AdminRoutes = (props) => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<SignIn onLogin={props.onLogin} program={props.program} />}
-      />
-      <Route
-        path="/SignUp"
-        element={<SignUp onLogIn={props.onLogin} onProgram={props.onProgram} />}
-      />
-      <Route
-        path="/Dashboard"
-        element={<AdminDashboard onUser={props.user} program={props.program} />}
-      >
-        <Route
-          index
-          element={<Home onUser={props.user} program={props.program} />}
-        />
+      <Route path="/" element={<SignIn />} />
+      <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/Dashboard" element={<AdminDashboard />}>
+        <Route index element={<Home />} />
         <Route path="/Dashboard/ManagePrograms" element={<ManagePrograms />} />
         <Route path="/Dashboard/AddPrograms" element={<AddManageProgram />} />
         <Route path="/Dashboard/ManageSessions" element={<ManageSession />} />
@@ -167,10 +155,7 @@ const AdminRoutes = (props) => {
           path="/Dashboard/ViewNotification"
           element={<ViewNotification />}
         />
-        <Route
-          path="/Dashboard/EditProfile"
-          element={<EditProfile student={props.student} />}
-        />
+        <Route path="/Dashboard/EditProfile" element={<EditProfile />} />
       </Route>
     </Routes>
   );
