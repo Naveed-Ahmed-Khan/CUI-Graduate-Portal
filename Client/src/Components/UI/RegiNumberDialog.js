@@ -18,10 +18,10 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function DialogSelect(props) {
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState("");
+
   let data = {
-    program: "--",
     session: "--",
+    year: "--",
     discipline: "--",
     rollNo: "--",
   };
@@ -40,6 +40,7 @@ export default function DialogSelect(props) {
     /* const data = new FormData(event.currentTarget);
     const a = data.get("age"); */
     // props.onProgram(data.program);
+
     props.onRegNum(data);
     if (reason !== "backdropClick") {
       setOpen(false);
@@ -86,7 +87,7 @@ export default function DialogSelect(props) {
             />
 
             <FormControl sx={{ m: 1, width: 120 }}>
-              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <InputLabel id="demo-simple-select-label">Discipline</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="discipline"
