@@ -4,7 +4,7 @@ import authService from "../API/auth";
 const user = JSON.parse(localStorage.getItem("user"));
 
 export const Login = createAsyncThunk(
-  "auth/login",
+  "auth/Login",
   async ({ userEmail, userPassword }, thunkAPI) => {
     console.log(userEmail, userPassword);
     try {
@@ -18,17 +18,18 @@ export const Login = createAsyncThunk(
   }
 );
 
-const intialState = user
+const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
 const authSlice = createSlice({
   name: "auth",
-  intialState,
+  initialState /* : { isLoggedIn: false, user: null } */,
   extraReducers: {
     [Login.fulfilled]: (state, action) => {
+      console.log("full " + action.payload.user);
       state.isLoggedIn = true;
-      state.user = action.payload.data;
+      state.user = action.payload.user;
     },
     [Login.rejected]: (state, action) => {
       state.isLoggedIn = false;
@@ -36,5 +37,4 @@ const authSlice = createSlice({
     },
   },
 });
-const reducer = { authSlice };
-export default reducer;
+export default authSlice.reducer;

@@ -12,9 +12,9 @@ const login = async (userEmail, userPassword) => {
       password: userPassword,
     });
     if (res) {
-      console.log(res);
-      localStorage.setItem("user", JSON.stringify(res));
-      return res;
+      console.log("Api " + res);
+      localStorage.setItem("user", JSON.stringify(res.data));
+      return res.data;
     }
   } catch (error) {
     console.log(error);

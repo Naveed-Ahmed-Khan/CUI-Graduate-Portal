@@ -68,7 +68,7 @@ export default function SignUp() {
         dispatch(setUser(userRole));
         /* props.onProgram(program); */
         /* props.onLogin(res.data.user.userRole[0].role); */
-        navigate("/Dashboard");
+        // navigate("/Dashboard");
       })
       .catch((err) => {
         console.log(err);

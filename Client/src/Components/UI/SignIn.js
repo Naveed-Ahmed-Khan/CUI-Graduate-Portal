@@ -54,6 +54,7 @@ export default function SignIn() {
     const userEmail = data.get("email");
     const userPassword = data.get("password");
     dispatch(Login({ userEmail, userPassword }))
+      // .unwrap()
       .then((res) => {
         console.log(res);
         navigate("/Dashboard");
