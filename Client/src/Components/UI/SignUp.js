@@ -19,11 +19,15 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser, setUserProgram } from "../../Store/user";
 import DialogueSelect from "./RegiNumberDialog";
 
 const theme = createTheme();
 
-export default function SignUp(props) {
+export default function SignUp() {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = React.useState("");
   const [regNumber, setRegNumber] = React.useState({
     session: "--",
@@ -46,7 +50,7 @@ export default function SignUp(props) {
     const data = new FormData(event.currentTarget);
 
     const program = data.get("Program");
-    props.onProgram(program);
+    dispatch(setUserProgram(program));
     axios
       .post("http://localhost:3000/auth/signup", {
         registrationNo: regNo,
@@ -60,9 +64,10 @@ export default function SignUp(props) {
       })
       .then((res) => {
         console.log(res /*.data  .user.userRole[0].role */);
-        /* const data = res.data.user; */
+        const userRole = res.data.user.userRole[0].role;
+        dispatch(setUser(userRole));
         /* props.onProgram(program); */
-        props.onLogin(res.data.user.userRole[0].role);
+        /* props.onLogin(res.data.user.userRole[0].role); */
         navigate("/Dashboard");
       })
       .catch((err) => {

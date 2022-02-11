@@ -6,8 +6,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
 
-export default function EditProfile(props) {
+export default function EditProfile() {
+  const { userProgram } = useSelector((state) => state.user);
   const handleSubmit = (event) => {
     event.preventDefault();
     alert("Submitted");
@@ -278,7 +280,7 @@ export default function EditProfile(props) {
         </FormControl>
       </Box>
 
-      {props.student === "PHD" && (
+      {userProgram !== "MS" && (
         <>
           <TextField
             id="standard-basic"

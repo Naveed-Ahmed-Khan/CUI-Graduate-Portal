@@ -1,11 +1,14 @@
 import React from "react";
 import ViewAnnouncement from "./ViewAnnouncement";
 import ViewNotification from "./ViewNotification";
+import { useSelector } from "react-redux";
 
-const Home = (props) => {
+const Home = () => {
+  const { userRole } = useSelector((state) => state.user);
+
   return (
     <div style={{ textAlign: "center" }}>
-      {props.onUser === "STUDENT" && (
+      {userRole === "STUDENT" && (
         <>
           <h1>Welcome!</h1>
           <p> Your are logged in as a Student</p>
@@ -15,13 +18,13 @@ const Home = (props) => {
           <ViewAnnouncement />
         </>
       )}
-      {props.onUser === "ADMIN" && (
+      {userRole === "ADMIN" && (
         <>
           <h1>Welcome!</h1>
           <p> Your are logged in as an Administrator</p>
         </>
       )}
-      {props.onUser === "GAC" && (
+      {userRole === "GAC" && (
         <>
           <h1>Welcome!</h1>
           <p> Your are logged in as GAC</p>
