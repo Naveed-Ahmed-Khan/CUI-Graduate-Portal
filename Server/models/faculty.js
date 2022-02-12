@@ -11,7 +11,8 @@ const facultySchema = new Schema({
   country: { type: String },
   city: { type: String },
   email: { type: String },
-
+  // department_id: { type: Schema.Types.ObjectId, ref: "Department" },
+  // campus_id: { type: Schema.Types.ObjectId, ref: "Campus" },
   password: { type: String },
   userType: { type: String },
 

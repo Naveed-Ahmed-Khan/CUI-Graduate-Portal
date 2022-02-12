@@ -17,7 +17,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../Store/user";
-import { Login } from "../../Store/auth";
+import { Login } from "../../Store/authSlice";
 
 /* function Copyright(props) {
   return (

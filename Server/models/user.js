@@ -8,8 +8,6 @@ const userSchema = new Schema({
   password: { type: String },
   student_id: { type: Schema.Types.ObjectId, ref: "Student" },
   faculty_id: { type: Schema.Types.ObjectId, ref: "Faculty" },
-  department_id: { type: Schema.Types.ObjectId, ref: "Department" },
-  campus_id: { type: Schema.Types.ObjectId, ref: "Campus" },
 
   userRole: [
     {
