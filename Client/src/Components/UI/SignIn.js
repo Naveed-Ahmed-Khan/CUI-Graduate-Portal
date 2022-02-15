@@ -17,7 +17,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../Store/user";
-import { Login } from "../../Store/auth";
+import { Login } from "../../Store/authSlice";
 
 /* function Copyright(props) {
   return (
@@ -54,8 +54,9 @@ export default function SignIn() {
     const userEmail = data.get("email");
     const userPassword = data.get("password");
     dispatch(Login({ userEmail, userPassword }))
+      // .unwrap()
       .then((res) => {
-        console.log(res);
+        /* console.log(res); */
         navigate("/Dashboard");
       })
       .catch((err) => {

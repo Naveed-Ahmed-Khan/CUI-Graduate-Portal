@@ -40,8 +40,10 @@ import EvaluateThesisMS from "../../Pages/EvaluateThesisMS";
 import EvaluateThesisPhD from "../../Pages/EvaluateThesisPhD";
 import PendingThesis from "../../Pages/PendingThesis";
 import AddFaculty from "../../Pages/AddFaculty";
-
+import { useSelector } from "react-redux";
 const AdminRoutes = (props) => {
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  console.log(isLoggedIn);
   return (
     <Routes>
       <Route path="/" element={<SignIn />} />

@@ -3,33 +3,34 @@ const Session = require("../models/session");
 const Faculty = require("../models/faculty");
 const User = require("../models/user");
 
-exports.checkUserRedirection = (req, res, next) => {
-  const user = req.user;
+// exports.checkUserRedirection = (req, res, next) => {
+//   const user = req.user;
 
-  if (user.userRole.role === "Student") {
-    return "/students";
-  } else if (user.userRole.role === "Admin") {
-    return "/admin";
-  } else if (user.userRole.role === "MSCOR") {
-    return "/mscoordinator";
-  } else if (user.userRole.role === "GAC") {
-    return "/gac";
-  } else if (user.userRole.role === "PHDCOR") {
-    return "/admin";
-  } else if (user.userRole.role === "GO") {
-    return "/go";
-  }
-};
+//   if (user.userRole.role === "Student") {
+//     return "/students";
+//   } else if (user.userRole.role === "Admin") {
+//     return "/admin";
+//   } else if (user.userRole.role === "MSCOR") {
+//     return "/mscoordinator";
+//   } else if (user.userRole.role === "GAC") {
+//     return "/gac";
+//   } else if (user.userRole.role === "PHDCOR") {
+//     return "/admin";
+//   } else if (user.userRole.role === "GO") {
+//     return "/go";
+//   }
+// };
 
-exports.studentSignUpNeeds = async (req) => {
-  const user = req.body;
+exports.studentSignUpNeeds = async (user) => {
   needs = {};
   needs.program = await Program.findOne(
     {
-      programShortName: user?.program,
+      programShortName: user.program,
     },
     { _id: 1 }
   );
+  console.log("program" + user.program);
+  console.log("needs");
   /*  needs.supervisor = await Faculty.findOne(
     {
       username: user.supervisorName,

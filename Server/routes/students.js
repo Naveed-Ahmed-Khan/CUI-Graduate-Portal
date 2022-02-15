@@ -11,63 +11,53 @@ const Announcement = require("../models/announcement");
 
 //studentDashboard Route == /students
 
-router.get(
-  "/",
-  passport.authenticate("local"),
-  auth.checkStudent,
-  (req, res) => {
-    User.find({ _id: req.user._id })
-      .populate({
-        path: "student_id",
-        populate: [
-          {
-            path: "program_id",
-            model: "Program",
-          },
-          {
-            path: "synopsisSession_id",
-            model: "Session",
-          },
-          {
-            path: "supervisor_id",
-            model: "Faculty",
-          },
-          {
-            path: "coSupervisor_id",
-            model: "Faculty",
-          },
-        ],
-      })
-      .exec()
-      .then((student) => {
-        res.setHeader("Content-Type", "application/json");
-        res.status(200).json(student);
-      })
-      .catch((err) => {
-        res.setHeader("Content-Type", "application/json");
-        res.status(500).json({ success: false, message: err.message });
-      });
-  }
-);
+router.get("/", auth.verifyUser, auth.checkStudent, (req, res) => {
+  User.find({ _id: req.user._id })
+    .populate({
+      path: "student_id",
+      populate: [
+        {
+          path: "program_id",
+          model: "Program",
+        },
+        {
+          path: "synopsisSession_id",
+          model: "Session",
+        },
+        {
+          path: "supervisor_id",
+          model: "Faculty",
+        },
+        {
+          path: "coSupervisor_id",
+          model: "Faculty",
+        },
+      ],
+    })
+    .exec()
+    .then((student) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(student);
+    })
+    .catch((err) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(500).json({ success: false, message: err.message });
+    });
+});
 
 //signleStudent by ID route== students/:id
 
-router.get(
-  "/:id",
-  passport.authenticate("local"),
-  auth.checkStudent,
-  (req, res) => {
-    Student.find({ _id: req.params.id })
-      .then((students) => {
-        res.setHeader("Content-Type", "application/json");
-        res.status(200).json(students);
-      })
-      .catch((err) => {
-        res.setHeader("Content-Type", "application/json");
-        res.status(500).json({ success: false, message: err.message });
-      });
-  }
-);
+router.get("/:id", auth.verifyUser, auth.checkStudent, (req, res) => {
+  Student.find({ _id: req.params.id })
+    .then((students) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(students);
+    })
+    .catch((err) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(500).json({ success: false, message: err.message });
+    });
+});
 
 //update student profile route== students/:id
 

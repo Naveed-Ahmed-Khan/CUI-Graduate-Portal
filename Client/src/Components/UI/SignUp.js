@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser, setUserProgram } from "../../Store/user";
 import DialogueSelect from "./RegiNumberDialog";
+import { Signup } from "../../Store/authSlice";
 
 const theme = createTheme();
 
@@ -50,31 +51,29 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
 
     const program = data.get("Program");
-    dispatch(setUserProgram(program));
-    axios
-      .post("http://localhost:3000/auth/signup", {
+
+    dispatch(
+      Signup({
         registrationNo: regNo,
         username: data.get("Name"),
         fatherName: data.get("Father'sName"),
         mobile: data.get("Mobile"),
         email: email,
         program: data.get("Program"),
-        userRole: "GAC",
+        userRole: "STUDENT",
         password: "dummy",
       })
+    )
+      // .unwrap()
       .then((res) => {
-        console.log(res /*.data  .user.userRole[0].role */);
-        const userRole = res.data.user.userRole[0].role;
-        dispatch(setUser(userRole));
-        /* props.onProgram(program); */
-        /* props.onLogin(res.data.user.userRole[0].role); */
+        console.log(res);
+        dispatch(setUserProgram(program));
+
         navigate("/Dashboard");
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // eslint-disable-next-line no-console
 
     console.log({
       registrationNo: regNo,
