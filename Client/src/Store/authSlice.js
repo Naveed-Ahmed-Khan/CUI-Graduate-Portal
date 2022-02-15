@@ -18,6 +18,51 @@ export const Login = createAsyncThunk(
   }
 );
 
+export const Signup = createAsyncThunk(
+  "auth/Signup",
+  async (
+    {
+      registrationNo,
+      username,
+      fatherName,
+      mobile,
+      email,
+      program,
+      userRole,
+      password,
+    },
+    thunkAPI
+  ) => {
+    console.log(
+      registrationNo,
+      username,
+      fatherName,
+      mobile,
+      email,
+      userRole,
+      program,
+      password
+    );
+    try {
+      var res = await authService.signup(
+        registrationNo,
+        username,
+        fatherName,
+        mobile,
+        email,
+        program,
+        userRole,
+        password
+      );
+      console.log("thunk" + res);
+      return res;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
+
 const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
@@ -31,7 +76,16 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.user = action.payload.user;
     },
-    [Login.rejected]: (state, action) => {
+    [Login.rejected]: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+    [Signup.fulfilled]: (state, action) => {
+      console.log("full " + action.payload.user);
+      state.isLoggedIn = true;
+      state.user = action.payload.user;
+    },
+    [Signup.rejected]: (state) => {
       state.isLoggedIn = false;
       state.user = null;
     },

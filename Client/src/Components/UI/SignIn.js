@@ -56,7 +56,7 @@ export default function SignIn() {
     dispatch(Login({ userEmail, userPassword }))
       // .unwrap()
       .then((res) => {
-        console.log(res);
+        /* console.log(res); */
         navigate("/Dashboard");
       })
       .catch((err) => {

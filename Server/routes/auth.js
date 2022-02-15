@@ -9,12 +9,15 @@ const auth = require("../auth/authenticate");
 
 router.post("/signup", async (req, res, next) => {
   const user = req.body;
+  console.log(user);
   if (user.userRole === "STUDENT") {
-    let needs = await helpers.studentSignUpNeeds(req);
-    console.log(needs);
+    console.log("student role" + user.userRole);
+    let needs = await helpers.studentSignUpNeeds(user);
+    console.log("route needs" + needs);
     let exists = await Student.findOne({ registrationNo: user.registrationNo });
     if (exists) {
       res.statusCode = 409;
+      console.log("conflict");
       res.setHeader("Content-Type", "application/json");
       res.json({
         success: false,
@@ -23,14 +26,16 @@ router.post("/signup", async (req, res, next) => {
     } else {
       Student.create({
         ...user,
-        // program_id: needs.program?._id,
+
+        program_id: needs.program,
+
         // synopsisSession_id: needs.session._id,
       })
         /* supervisor_id: needs.supervisor._id,
         coSupervisor_id: needs.coSupervisor._id, */
 
         .then((student) => {
-          console.log("Student created");
+          console.log("Student created" + student.student_id);
           User.register(
             new User({
               username: user.username,
@@ -48,10 +53,13 @@ router.post("/signup", async (req, res, next) => {
                 passport.authenticate("local")(req, res, () => {
                   res.statusCode = 200;
                   res.setHeader("Content-Type", "application/json");
+                  console.log("student role" + user.userRole);
+
                   res.json({
                     success: true,
+
                     status: "Registration Successful!",
-                    user: user,
+                    user: req.user,
                   });
                 });
               }
@@ -84,10 +92,12 @@ router.post("/signup", async (req, res, next) => {
               passport.authenticate("local")(req, res, () => {
                 res.statusCode = 200;
                 res.setHeader("Content-Type", "application/json");
+                console.log("faculty role" + user.userRole);
+
                 res.json({
                   success: true,
                   status: "Registration Successful!",
-                  user: user,
+                  user: req.user,
                 });
               });
             }
